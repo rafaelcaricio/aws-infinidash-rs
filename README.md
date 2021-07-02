@@ -1,4 +1,4 @@
-# AWS Infinidash client
+# AWS Infinidash - Fully featured Rust client
 
 Fully featured AWS Infinidash client for Rust applications. You can use the AWS Infinidash client to make AWS API calls, and
 to get your application to scale on the AWS infrastructure automagically. AWS Infinidash leverages the blockchain to provide the
@@ -7,6 +7,9 @@ access the application. Using the Infinidash client, you can scale your applicat
 scale your application to any available AWS account. Using assimetric cryptography, the Infinidash client can be used to
 encrypt data between any two AWS regions with no need for any shared secret.
 
+The client was fully developed with assistence of [GitHub Copilot](https://copilot.github.com/) and is currently in beta. Production usage
+is recommended for now, but the client is still in development. If you find any bugs, please report them on the
+[issue tracker](https://github.com/rafaelcaricio/aws-infinidash-rs/issues).
 
 # Usage
 
