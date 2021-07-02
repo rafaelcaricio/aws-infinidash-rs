@@ -9,5 +9,5 @@ license = "MIT/GPL-3.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-infinidash-aws = { git = "https://github.com/awslabs/aws-sdk-rust", tag = "v0.0.10-alpha", package = "aws-sdk-dynamodb", optional = true }
+# infinidash-official = { git = "https://github.com/awslabs/aws-sdk-rust", tag = "v0.0.10-alpha", package = "aws-sdk-infinidash" }
 tokio = { version = "1", features = ["full"] }
