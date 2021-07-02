@@ -3,6 +3,7 @@ name = "infinidash"
 version = "0.1.0"
 description = "The Rust AWS Infinidash library"
 authors = ["Rafael Caricio <rafael@caricio.com>"]
+repository = "https://github.com/rafaelcaricio/aws-infinidash-rs"
 edition = "2018"
 license = "MIT/GPL-3.0"
 
