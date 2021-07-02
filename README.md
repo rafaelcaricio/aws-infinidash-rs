@@ -1,3 +1,4 @@
+![AWS Infinidash Rust Client](https://github.com/rafaelcaricio/aws-infinidash-rs/raw/main/aws-infinidash-logo.jpeg)
 # AWS Infinidash - Fully featured Rust client
 
 Fully featured AWS Infinidash client for Rust applications. You can use the AWS Infinidash client to make AWS API calls, and
