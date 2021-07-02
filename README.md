@@ -18,17 +18,22 @@ to be present in the working directory. The configuration file should be named `
 same directory as the executable.
 
 ```rust
-extern use aws_infinidash::{AWSInfinidash, AWSInfinidashClient};
+
+use infinidash::{Infinidash, InfinidashClient};
+use web3::{
+    contract::{Contract, Options},
+    types::U256,
+};
 
 #[tokio::main]
-fn main() -> {
-     let client = AWSInfinidashClient::new();
-     let algo = aws_infinidash::Algorithm::AES_256_GCM_IV12_TAG16_HKDF_SHA256;
+async fn main() -> web3::contract::Result<()> {
+     let client = InfinidashClient::new();
+     let algo = infinidash::Algorithm::AES_256_GCM_IV12_TAG16_HKDF_SHA256;
      let key = b"12345678901234567890123456789012";
      client.encrypt("Hello World".to_owned(), algo, key).unwrap();
 
      client.publish().expect("Failed to publish");
-     let application = client.application().expect("Failed to get application");
+     let application: infinidash::Application = client.application().expect("Failed to get application");
      let app_id = application.get_application_id().unwrap();
      application.scale_to(1_345).expect("Failed to scale application");
 
@@ -37,6 +42,25 @@ fn main() -> {
      for actor in &available_actors {
          println!("{}", actor.get_id().unwrap());
      }
+
+     let contract = Contract::deploy(web3.eth(), include_bytes!("../src/infinidash_app_desc.json"))?
+        .confirmations(0)
+        .options(Options::with(|opt| {
+            opt.value = Some(5.into());
+            opt.gas_price = Some(5.into());
+            opt.gas = Some(3_000_000.into());
+        }))
+        .execute(
+            bytecode,
+            (U256::from(1_000_000_u64), "My Token".to_owned(), 3u64, "MT".to_owned()),
+            my_account,
+        )
+        .await?;
+
+    let contract_address = contract.address();
+    println!("Contract address: {}", contract_address);
+
+    Ok(());
 }
 
 ```
